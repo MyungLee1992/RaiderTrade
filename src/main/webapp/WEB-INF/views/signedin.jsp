@@ -27,7 +27,7 @@
       <!--Make sure you look at the action-->
         <form:form action="/signedin" class="my-auto col-sm-12 col-md-8"
                    method="POST" modelAttribute="book">
-          <div class="p-1 bg-light rounded rounded-pill shadow-sm">
+          <div class="p-1 bg-light rounded rounded-pill shadow-lg">
             <h5 class="text-center">Enter Listing Information</h5>
             Course #:
             <div class="input-group">
@@ -122,7 +122,7 @@
       <div class="row justfy-content-center h-100">
         <!--Make sure to add the action for search button-->
         <form action="/searched" method="GET" class="text-center my-auto col-12">
-          <div class="p-1 bg-light rounded rounded-pill shadow-sm">
+          <div class="p-1 bg-light rounded rounded-pill shadow-lg">
             <div class="input-group">
               <input
                 type="search"

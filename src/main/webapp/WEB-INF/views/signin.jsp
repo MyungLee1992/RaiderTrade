@@ -25,7 +25,7 @@
     <div class="container">
       <div class="row justify-content-center h-100">
         <form method="POST" action="/signin" class="my-auto col-sm-12 col-md-8" modelAttribute="user">
-          <div class="p-1 bg-light rounded rounded-pill shadow-sm">
+          <div class="p-1 bg-light rounded rounded-pill shadow-lg">
             <div class="input-group">
               <input
                 type="text"

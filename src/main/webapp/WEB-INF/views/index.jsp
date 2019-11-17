@@ -26,7 +26,7 @@
       <div class="row justify-content-center h-100">
         <font color="red">${error}</font>
         <form:form method="POST" action="/" class="my-auto col-sm-12 col-md-8" modelAttribute="user">
-          <div class="p-1 bg-light rounded rounded-pill shadow-sm">
+          <div class="p-1 bg-light rounded rounded-pill shadow-lg">
             <div class="input-group">
               <form:input
                 type="text"

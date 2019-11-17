@@ -27,7 +27,7 @@
       <!--Make sure you look at the action-->
         <form:form action="/additem" class="my-auto col-sm-12 col-md-8"
                    method="POST" modelAttribute="book">
-          <div class="p-1 bg-light rounded rounded-pill shadow-sm">
+          <div class="p-1 bg-light rounded rounded-pill shadow-lg">
             <h5 class="text-center">Enter Listing Information</h5>
             Course #:
             <div class="input-group">
