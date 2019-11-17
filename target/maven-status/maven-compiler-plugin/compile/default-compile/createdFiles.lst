@@ -1,0 +1,10 @@
+com\RaiderTradez\api\Controller\UserController.class
+com\RaiderTradez\api\Controller\BookController.class
+com\RaiderTradez\api\Service\UserService.class
+com\RaiderTradez\api\Entity\UserDTO.class
+com\RaiderTradez\api\Entity\User.class
+com\RaiderTradez\api\Entity\Book.class
+com\RaiderTradez\RaiderTradezApplication.class
+com\RaiderTradez\api\Repository\BookRepository.class
+com\RaiderTradez\api\Repository\UserRepository.class
+com\RaiderTradez\api\Service\UserServiceImpl.class
