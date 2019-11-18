@@ -1,9 +1,9 @@
 com\RaiderTrade\api\Service\UserService.class
 com\RaiderTrade\api\Entity\Book.class
-com\RaiderTrade\RaiderTradezApplication.class
 com\RaiderTrade\api\Service\UserServiceImpl.class
 com\RaiderTrade\api\Controller\UserController.class
 com\RaiderTrade\api\Controller\BookController.class
 com\RaiderTrade\api\Entity\User.class
 com\RaiderTrade\api\Repository\UserRepository.class
+com\RaiderTrade\RaiderTradeApplication.class
 com\RaiderTrade\api\Repository\BookRepository.class

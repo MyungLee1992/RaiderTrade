@@ -14,41 +14,44 @@
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"
     ></script>
-    <script src="/static/js/cdn.js"></script>
-    <script src="/static/js/main.js"></script>
+    <script src="/js/cdn.js"></script>
+    <script src="/js/main.js"></script>
     <link id="cdn" />
-    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
     <title>RaiderTrade</title>
   </head>
   <body>
     <!-- <div id="indexNavigationbar"></div> -->
-    <%@include file="/static/html/indexNavigationbar.html" %>
+    <%@include file="/html/indexNavigationbar.html" %>
      <div class="container">
+    ${error}
       <div class="row justify-content-center h-100">
         <form:form method="POST" action="/" class="my-auto col-sm-12 col-md-8" modelAttribute="user">
-        <div class="text-center">
-          <p class="text-danger">${error}</p>
-        </div>
           <div class="p-1 bg-light rounded rounded-pill shadow-lg">
+          <h5 class="text-center">Registration Form:</h5>
+            First Name:
             <div class="input-group">
               <form:input
                 type="text"
+                placeholder="John"
                 path="firstName"
-                placeholder="First Name"
                 aria-describedby="button-addon1"
                 class="form-control border-0 bg-light"
               />
             </div>
-            <form:input
+            Last Name:
+            <div class="input-group">
+              <form:input
                 type="text"
+                placeholder="Smith"
                 path="lastName"
-                placeholder="Last Name"
                 aria-describedby="button-addon1"
                 class="form-control border-0 bg-light"
               />
             </div>
+            User Type:
             <form:select path="userType" class="input-group">
-              <form:option
+              <form:option 
                 value="student" label="Student"
                 class="form-control border-0 bg-light"
               />
@@ -57,77 +60,58 @@
                 class="form-control border-0 bg-light"
               />
             </form:select>
+            User Name:
             <div class="input-group">
               <form:input
                 type="text"
+                placeholder="dme3c"
                 path="userName"
-                placeholder="MT Mail Username"
-                class="form-control border-0 bg-light"
-              />
-            </div>
-            <div class="input-group">
-              <form:input
-                type="text"
-                path="phoneNum"
-                placeholder="Phone Number"
-                class="form-control border-0 bg-light"
-              />
-            </div>
-            <div class="input-group">
-              <form:input
-                type="password"
-                path="password"
-                placeholder="Password"
-                class="form-control border-0 bg-light"
-              />
-            <div class="input-group">
-              <form:input
-                type="password"
-                path="confirmPassword"
-                placeholder="Verify Password"
-                class="form-control border-0 bg-light"
-              />
-              <div class="input-group-append">
-                <button
-                      id="button-addon1"
-                      type="submit"
-                      class="btn btn-link bg-light text-primary"
-                    >
-                      Submit
-                    </button>
-              </div>
-            </div>
-          </div>
-        </form:form>
-      </div>
-    </div>
-    <!--Original index.jsp-->
-    <!--
-    <div class="container">
-      <div class="row h-100">
-        <form action="" class="text-center my-auto col-12">
-          <div class="p-1 bg-light rounded rounded-pill shadow-sm">
-            <div class="input-group">
-              <input
-                type="search"
-                placeholder="What're you searching for?"
                 aria-describedby="button-addon1"
                 class="form-control border-0 bg-light"
               />
-              <div class="input-group-append">
+            </div>
+             Phone Number:
+            <div class="input-group">
+              <form:input
+                type="text"
+                placeholder="615-543-2332"
+                path="phoneNum"
+                aria-describedby="button-addon1"
+                class="form-control border-0 bg-light"
+              />
+            </div>
+            Password:
+            <div class="input-group">
+              <form:input
+                type="password"
+                placeholder="password"
+                path="password"
+                aria-describedby="button-addon1"
+                class="form-control border-0 bg-light"
+              />
+            </div>
+            Verify Password:
+            <div class="input-group">
+              <form:input
+                type="password"
+                placeholder="verify password"
+                path="confirmPassword"
+                aria-describedby="button-addon1"
+                class="form-control border-0 bg-light"
+              />
+            <div class="input-group-append">
                 <button
                   id="button-addon1"
                   type="submit"
-                  class="btn btn-link text-primary"
+                  class="btn btn-link bg-light text-primary"
                 >
-                  <i class="fa fa-search"></i>
+                  Submit
                 </button>
               </div>
             </div>
-          </div>
-        </form>
+         </div>
+       </form:form>
       </div>
-    </div>
-    -->
+     </div>
   </body>
 </html>

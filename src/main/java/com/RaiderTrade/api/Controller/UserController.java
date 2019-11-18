@@ -40,7 +40,9 @@ public class UserController {
             
         } catch(NullPointerException ex) {
             return new ModelAndView("index", "error",
-                                    "Either the user name exists or password doesn't match");            
+                                    "<div class=\"row justify-content-center bg-light mt-3\">\n" +
+"                                       <strong class=\"text-center text-danger\">Either the user name exists or password doesn't match</strong>\n" +
+"                                   </div>");            
         }
     }
     
@@ -66,7 +68,9 @@ public class UserController {
             
         } catch(NullPointerException ex) {
             return new ModelAndView("signin", "error",
-                                    "The user name and password doesn't match in our record");
+                                    "<div class=\"row justify-content-center bg-light mt-3\">\n" +
+"                                       <strong class=\"text-center text-danger\">The user name or password doesn't match</strong>\n" +
+"                                   </div>");
         }
     }
 

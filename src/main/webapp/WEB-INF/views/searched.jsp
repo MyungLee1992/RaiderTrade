@@ -9,9 +9,9 @@
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"
     ></script>
-    <script src="/static/js/main.js"></script>
+    <script src="/js/main.js"></script>
     <link id="cdn" />
-    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
     <title>Searched</title>
   </head>
   <body>

@@ -14,16 +14,16 @@
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"
     ></script>
-    <script src="/static/js/main.js"></script>
+    <script src="/js/main.js"></script>
     <link id="cdn" />
-    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/css/main.css" />
     <title>Signed In</title>
   </head>
 <body>
-    <%@include file="/static/html/signedNavigationbar.html" %>
+    <%@include file="/html/signedNavigationbar.html" %>
     <!-- <div id="signedNavigationbar"></div> -->
     <div class="container">
-      <div class="row justify-content-center h-100">
+      <div class="row justify-content-center h-100 mt-3">
       <!--Make sure you look at the action-->
         <form:form action="/signedin" class="my-auto col-sm-12 col-md-8"
                    method="POST" modelAttribute="book">
