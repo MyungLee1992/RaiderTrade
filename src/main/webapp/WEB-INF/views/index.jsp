@@ -14,18 +14,21 @@
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"
     ></script>
-    <script src="./js/cdn.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="/static/js/cdn.js"></script>
+    <script src="/static/js/main.js"></script>
     <link id="cdn" />
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/static/css/main.css" />
     <title>RaiderTrade</title>
   </head>
   <body>
-    <div id="indexNavigationbar"></div>
+    <!-- <div id="indexNavigationbar"></div> -->
+    <%@include file="/static/html/indexNavigationbar.html" %>
      <div class="container">
       <div class="row justify-content-center h-100">
-        <font color="red">${error}</font>
         <form:form method="POST" action="/" class="my-auto col-sm-12 col-md-8" modelAttribute="user">
+        <div class="text-center">
+          <p class="text-danger">${error}</p>
+        </div>
           <div class="p-1 bg-light rounded rounded-pill shadow-lg">
             <div class="input-group">
               <form:input
