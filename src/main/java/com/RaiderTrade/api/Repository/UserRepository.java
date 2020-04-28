@@ -1,6 +1,6 @@
 package com.RaiderTrade.api.Repository;
 
-import com.RaiderTrade.api.Entity.User;
+import com.RaiderTrade.api.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

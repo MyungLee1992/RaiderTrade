@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light rounded stick-top">
+  <div class="container-fluid">
+    <a href="#" class="navbar-brand">
+      <img class="logo" src="../img/logo.png" alt="" />
+    </a>
+    <button
+      class="navbar-toggler custom-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarToggleExternalContent"
+      aria-controls="navbarToggleExternalContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link" style="color: black !important;">
+            Welcome ${firstName}
+          </a>
+        </li>
+<!--    <li class="nav-item">
+          <a href="/additem" class="nav-link">Add Item</a>
+        </li> -->
+        <li class="nav-item">
+          <a href="/index" class="nav-link">Sign Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-custom rounded p-4">
+    <h5 class="text-dark h4 text-center">Welcome, ${firstName}</h5>
+    <nav class="text-center">
+      <ul class="navbar-nav ml-auto">
+<!--    <li class="nav-item">
+          <a href="/additem" class="nav-link">Add Item</a>
+        </li> -->
+        <li class="nav-item">
+          <a href="/index" class="nav-link">Sign Out</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

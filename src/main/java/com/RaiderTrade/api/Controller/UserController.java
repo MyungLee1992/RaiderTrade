@@ -1,76 +1,80 @@
 package com.RaiderTrade.api.Controller;
 
-import com.RaiderTrade.api.Entity.Book;
-import java.util.List;
-import com.RaiderTrade.api.Entity.User;
+import com.RaiderTrade.api.Model.User;
 import com.RaiderTrade.api.Repository.BookRepository;
+import com.RaiderTrade.api.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import com.RaiderTrade.api.Service.UserService;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.validation.Valid;
 
 @Controller
-public class UserController {
-    
+public class UserController implements WebMvcConfigurer {
+
     @Autowired
     private UserService userService;
     
     @Autowired
     private BookRepository bookRepository;
-    
-    // Index page with sign up form
-    @GetMapping({"/", "/index"})
-    public String index(Model userModel) {
-        User user = new User();
-        userModel.addAttribute("user", user);
+
+    // Index page
+    @GetMapping("/")
+    public String index() {
         return "index";
     }
-    
-    // Create a new user
-    @PostMapping({"/", "/index"})
-    public ModelAndView createUser(@ModelAttribute("user") User user,
-                                    Model userModel) {
-        try {
-            User newUser = userService.createUser(user);
-            userModel.addAttribute("firstName", newUser.getFirstName());
-            userModel.addAttribute("registerSuccessMsg", "Registration Succeed!");
-            return new ModelAndView("signin", "model", userModel);            
-            
-        } catch(NullPointerException ex) {
-            return new ModelAndView("index", "error",
-                                    "<div class=\"row justify-content-center bg-light mt-3\">\n" +
-"                                       <strong class=\"text-center text-danger\">Either the user name exists or password doesn't match</strong>\n" +
-"                                   </div>");            
-        }
+
+    // Sign up page
+    @GetMapping("/signup")
+    public String signUp(Model userModel) {
+        userModel.addAttribute("userForm", new User());
+        return "signup";
     }
-    
+    // Create a new user
+    @PostMapping("/signup")
+    public ModelAndView createUser(@Valid @ModelAttribute("userForm") User userForm,
+                             BindingResult result,
+                             Model userModel) {
+
+        if(result.hasErrors())
+            return new ModelAndView("signup");
+
+        User newUser = userService.createUser(userForm);
+        if(newUser == null) {
+            userModel.addAttribute("error", "The user name or password doesn't match");
+            return new ModelAndView("signup", "model", userModel);
+        }
+
+        userModel.addAttribute("registerSuccessMsg", "Registration Succeed!");
+        return new ModelAndView("signin", "model", userModel);
+    }
+
     // Log in page
-    @GetMapping("/signin") // localhost:8080/signin
-    public String login(Model model) {
-        return "signin";  // signin.jsp
+    @GetMapping("/signin")
+    public String signIn() {
+        return "signin";
     }
     
     // Authenticate user
     @PostMapping("/signin")
     public ModelAndView verifyUser(@RequestParam String userName,
                                    @RequestParam String password,
-                                    Model model) {
-        try {
-            User user = userService.authenticateUser(userName, password);
-            List<Book> bookList = bookRepository.findAll();
-            model.addAttribute("bookList", bookList);        
-            model.addAttribute("firstName", user.getFirstName());
-            model.addAttribute("book", new Book());
-        
-            return new ModelAndView("signedin", "model", model);            
-            
-        } catch(NullPointerException ex) {
-            return new ModelAndView("signin", "error",
-                                    "<div class=\"row justify-content-center bg-light mt-3\">\n" +
-"                                       <strong class=\"text-center text-danger\">The user name or password doesn't match</strong>\n" +
-"                                   </div>");
+                                   Model userModel) {
+
+        User existingUser = userService.authenticateUser(userName, password);
+
+        if(existingUser == null) {
+            userModel.addAttribute("error", "The user name or password doesn't match");
+            return new ModelAndView("signin", "model", userModel);
+        } else {
+            return new ModelAndView("signedin");
         }
     }
 
@@ -79,13 +83,6 @@ public class UserController {
     public String signedInView() {
         return "signedin";
     }
-    
-    // Add book from signed in view
-    @PostMapping("/signedin")
-    public ModelAndView addBook(@ModelAttribute("book") Book book) {
-        bookRepository.save(book);
-        List<Book> bookList = bookRepository.findAll();
-        return new ModelAndView("signedin", "bookList", bookList);
-    }
+
  
 }

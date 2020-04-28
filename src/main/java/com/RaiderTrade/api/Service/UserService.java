@@ -1,7 +1,8 @@
 package com.RaiderTrade.api.Service;
 
+import com.RaiderTrade.api.Model.User;
+
 import java.util.List;
-import com.RaiderTrade.api.Entity.User;
 
 public interface UserService {
     

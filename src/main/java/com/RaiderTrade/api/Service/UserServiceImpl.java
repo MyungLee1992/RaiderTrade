@@ -1,6 +1,6 @@
 package com.RaiderTrade.api.Service;
 
-import com.RaiderTrade.api.Entity.User;
+import com.RaiderTrade.api.Model.User;
 import com.RaiderTrade.api.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,19 +15,19 @@ public class UserServiceImpl implements UserService {
     private final BCryptPasswordEncoder Encrypt = new BCryptPasswordEncoder(8);
     
     @Override
-    public User createUser(User user) {
-        // If user doesn't exist and both passwords are same,
-        // Save user data to MySQL
-        if(!userRepository.existsByUserName(user.getUserName()) &&
-            user.getPassword().equals(user.getConfirmPassword()))
+    public User createUser(User newUser) {
+        // If newUser doesn't exist and both passwords are same,
+        // Save newUser data to MySQL
+        if(!userRepository.existsByUserName(newUser.getUserName()) &&
+            newUser.getPassword().equals(newUser.getConfirmPassword()))
         {
             // Encrypt password
-            String encryptedPassword = Encrypt.encode(user.getPassword());
-            user.setPassword(encryptedPassword);
-            userRepository.save(user);
-            return user;
+            String encryptedPassword = Encrypt.encode(newUser.getPassword());
+            newUser.setPassword(encryptedPassword);
+            userRepository.save(newUser);
+            return newUser;
         } else {
-            return null;
+            return (User)null;
         }
     }
     
@@ -38,11 +38,11 @@ public class UserServiceImpl implements UserService {
             if (Encrypt.matches(password, existingUser.getPassword())) {
                 return existingUser;
             } else {
-                return null;
+                return (User)null;
             }
              
         } catch (NullPointerException ex) {
-            return null;
+            return (User)null;
         }
     }
 

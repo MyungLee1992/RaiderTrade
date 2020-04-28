@@ -4,11 +4,13 @@
 }
 
 body {
-  font-family: 'Fjalla One', sans-serif;  
+  font-family: 'Fjalla One', sans-serif;
   width: 100%;
-  background-image: url('/static/img/bg-campus.jpg');
-  background-position: center;
-  background-size: cover;
+  background-image: url('/img/bg-campus.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
 }
 
 nav .navbar-brand {
