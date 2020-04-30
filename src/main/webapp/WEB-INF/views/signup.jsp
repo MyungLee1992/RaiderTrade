@@ -40,13 +40,13 @@
                     </div>
                  </div>
 
-                 <form:errors path="userName" class="text-danger"/>
+                 <form:errors path="username" class="text-danger"/>
                  <div class="input-group mb-2">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon3">Username</span>
                     </div>
                     <form:input type="text" class="form-control" placeholder="dwc5k"
-                           aria-describedby="basic-addon3" path="userName"/>
+                           aria-describedby="basic-addon3" path="username"/>
                  </div>
 
                  <form:errors path="phoneNum" class="text-danger"/>

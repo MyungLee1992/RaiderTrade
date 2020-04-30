@@ -1,5 +1,8 @@
 package com.RaiderTrade.api.Model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,11 +15,8 @@ public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "item_id")
-    private int itemId;
-    
-//    @Column(name = "user_id", insertable=false, updatable=false)
-//    private int userId;
+    @Column(name = "book_id")
+    private int bookId;
 
     @Column(name = "course_abb")
     private String courseAbb;
@@ -35,55 +35,29 @@ public class Book implements Serializable {
 
     @Column(name = "post_date")
     private Date postDate = new Date();
-//    private SimpleDateFormat postDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ssZ a");
 
     @Column(name = "price")
     private float price;
-    
+
     @Column(name = "detail")
     private String detail;
-    
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name="user_id", nullable=false)
-//    protected User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User userId;
 
     public Book() {
     
     }
 
-    public Book(String courseAbb, String authorName, String bookName,
-                Long ibnNum, String cond, float price, String detail) {
-        this.courseAbb = courseAbb;
-        this.authorName = authorName;
-        this.bookName = bookName;
-        this.ibnNum = ibnNum;
-        this.cond = cond;
-        this.price = price;
-        this.detail = detail;
+    public int getBookId() {
+        return bookId;
     }
 
-//    public Book(String courseAbb, String authorName, String bookName,
-//                Long ibnNum, String cond, float price, User user) {
-//        this.courseAbb = courseAbb;
-//        this.authorName = authorName;
-//        this.bookName = bookName;
-//        this.ibnNum = ibnNum;
-//        this.cond = cond;
-//        this.price = price;
-//        this.user = user;
-//    }
-
-    public int getItemId() {
-        return itemId;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
-//
-//    public int getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
 
     public String getCourseAbb() {
         return courseAbb;
@@ -101,11 +75,11 @@ public class Book implements Serializable {
         this.authorName = authorName;
     }
 
-    public String getbookName() {
+    public String getBookName() {
         return bookName;
     }
 
-    public void setbookName(String bookName) {
+    public void setBookName(String bookName) {
         this.bookName = bookName;
     }
 
@@ -140,16 +114,6 @@ public class Book implements Serializable {
     public void setPrice(float price) {
         this.price = price;
     }
-    
-    
-    
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     public String getDetail() {
         return detail;
@@ -158,5 +122,12 @@ public class Book implements Serializable {
     public void setDetail(String detail) {
         this.detail = detail;
     }
-    
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
 }

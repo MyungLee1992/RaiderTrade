@@ -1,13 +1,10 @@
 package com.RaiderTrade.api.Service;
 
 import com.RaiderTrade.api.Model.User;
-
 import java.util.List;
 
 public interface UserService {
     
-    User createUser(User user);
-   
     List<User> lookup();
     
     User updateByUserId(User user, int userId);
@@ -16,6 +13,10 @@ public interface UserService {
     
     long total();
 
-    User authenticateUser(String userName, String password);
-   
+    User authenticateUser(String username, String password);
+
+    User findByUsername(String username);
+
+    void save(User user);
+
 }
