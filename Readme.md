@@ -1,11 +1,11 @@
-# RaiderTrade
+<img src="src/main/webapp/img/logo.png" width="700" height="300" />
 RaiderTrade is a market website for students to buy and sell textbooks and electronics.
 
 ## Motivation
 RaiderTrade is made to help students save money on textbooks and electronics for their classes.
  
 ## Screenshots
-<img src="images/home_page" width="200" height="200" />
+
 Include logo/demo screenshot etc.
 
 ## Tech/Framework used
@@ -13,6 +13,7 @@ Include logo/demo screenshot etc.
 - HTML
 - CSS
 - JS
+- Bootstrap
 
 <b>Back End</b>
 - JSP (Java Server Pages)
