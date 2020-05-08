@@ -19,7 +19,7 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <c:if test="${not empty pageContext.request.userPrincipal.name}">
-          <a href="#" class="nav-link" style="color: black !important;">
+          <a href="/user" class="nav-link" style="color: black !important;">
             Welcome! ${pageContext.request.userPrincipal.name}
           </a>
           <li class="nav-item">

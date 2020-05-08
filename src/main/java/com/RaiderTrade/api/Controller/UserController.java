@@ -9,13 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class UserController implements WebMvcConfigurer {
@@ -50,7 +48,7 @@ public class UserController implements WebMvcConfigurer {
 
         userService.save(userForm);
 
-        return "redirect:/signin";
+        return "redirect:signin";
 
     }
 
@@ -77,6 +75,15 @@ public class UserController implements WebMvcConfigurer {
         }
 
         return "index";
+    }
+
+    // Display user
+    @GetMapping("/user")
+    public String displayUser(Model userModel, Principal principal) {
+        String username = principal.getName();
+        User userInfo = userService.findByUsername(username);
+        userModel.addAttribute("userInfo", userInfo);
+        return "showUser";
     }
 
 }

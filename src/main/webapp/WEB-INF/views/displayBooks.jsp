@@ -13,7 +13,7 @@
                   <th scope="col">IBN #</th>
                   <th scope="col">Condition</th>
                   <th scope="col">Selling Price</th>
-                  <th scope="col">Book Detail</th>
+<!--                  <th scope="col">Book Detail</th>-->
                   <th scope="col">Post Date</th>
               </tr>
           </thead>
@@ -27,7 +27,7 @@
                   <td><c:out value="${book.ibnNum}"/></td>
                   <td><c:out value="${book.cond}"/></td>
                   <td><c:out value="${book.price}"/></td>
-                  <td><c:out value="${book.detail}"/></td>
+<!--                  <td><c:out value="${book.detail}"/></td>-->
                   <td><c:out value="${book.postDate}"/></td>
               </tr>
               </c:forEach>
