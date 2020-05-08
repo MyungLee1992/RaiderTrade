@@ -1,3 +1,4 @@
+# RaiderTrade
 <img src="src/main/webapp/img/logo.png" width="700" height="300" />
 RaiderTrade is a market website for students to buy and sell textbooks and electronics.
 
