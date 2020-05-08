@@ -5,6 +5,7 @@ RaiderTrade is a market website for students to buy and sell textbooks and elect
 RaiderTrade is made to help students save money on textbooks and electronics for their classes.
  
 ## Screenshots
+<img src="images/home_page" width="200" height="200" />
 Include logo/demo screenshot etc.
 
 ## Tech/Framework used
@@ -22,4 +23,4 @@ Include logo/demo screenshot etc.
 - Hibernate
 <b>Architecture</b>
 - RESTful API
-- MVC Architecture
+- MVC (Model-View-Controller)
