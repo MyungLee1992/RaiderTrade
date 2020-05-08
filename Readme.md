@@ -13,14 +13,17 @@ Include logo/demo screenshot etc.
 - HTML
 - CSS
 - JS
+
 <b>Back End</b>
 - JSP (Java Server Pages)
 - MySQL
+
 <b>Framework</b>
 - Spring Boot
 - Apache Maven
 - JPA (Java Persistence API)
 - Hibernate
+
 <b>Architecture</b>
 - RESTful API
 - MVC (Model-View-Controller)
