@@ -39,30 +39,33 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void update(User user, User updatedUser) {
+        user.setFirstName(updatedUser.getFirstName());
+        user.setLastName(updatedUser.getLastName());
+        user.setUserType(updatedUser.getUserType());
+        user.setPhoneNum(updatedUser.getPhoneNum());
+
+        userRepository.save(user);
+    }
+
+    @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
-    public List<User> lookup() {
+    public List<User> findAll() {
         return (List<User>) userRepository.findAll();
     }
-    
+
     @Override
     public User updateByUserId(User user, int userId) {
         return userRepository.save(user);
     }
 
     @Override
-    public void deleteByUserId(int userId) {
-        userRepository.deleteByUserId(userId);
-    }
-    
-    @Override
     public long total() {
         return userRepository.count();
     }
 
-
-    
 }

@@ -13,51 +13,99 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
 public class BookController {
-    
-    @Autowired
-    private BookRepository bookRepository;
 
-    @Autowired
-    private SecurityService securityService;
+   @Autowired
+   private BookRepository bookRepository;
 
-    @Autowired
-    private UserService userService;
+   @Autowired
+   private SecurityService securityService;
 
-    @Autowired
-    private UserRepository userRepository;
+   @Autowired
+   private UserService userService;
 
-    private static final Logger logger = LoggerFactory.getLogger(BookController.class);
+   @Autowired
+   private UserRepository userRepository;
 
-    // Display all books
-    @GetMapping("/displayBooks")
-    public ModelAndView getAllBooks(Model bookModel) {
-        List<Book> bookList = bookRepository.findAll();
-        bookModel.addAttribute("bookList", bookList);
-        return new ModelAndView("displayBooks", "bookList", bookList);
-    }
+   private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 
-    // Book registration
-    @GetMapping("/addBook")
-    public String addBook(Model bookModel) {
-        bookModel.addAttribute("bookForm", new Book());
-        return "addBook";
-    }
+   // Display all books
+   @GetMapping("/books")
+   public String getAllBooks(Model bookModel) {
+      List<Book> bookList = bookRepository.findAll();
+      bookModel.addAttribute("bookList", bookList);
 
-    // Add book
-    @PostMapping("/addBook")
-    public String addBook(@ModelAttribute("bookForm") Book book) {
-        String loggedInUsername = securityService.findLoggedInUsername();
-        User user = userService.findByUsername(loggedInUsername);
-        book.setUserId(user);
-        bookRepository.save(book);
-        return "index";
-    }
-    
+      return "books/index";
+   }
+
+   // Book registration
+   @GetMapping("/books/new")
+   public String newBook(Model bookModel) {
+      bookModel.addAttribute("bookForm", new Book());
+
+      return "books/new";
+   }
+
+   // Add new book
+   @PostMapping("/books/new")
+   public String newBook(@ModelAttribute("bookForm") Book book) {
+      String loggedInUsername = securityService.findLoggedInUsername();
+      User user = userService.findByUsername(loggedInUsername);
+      book.setUserId(user);
+      bookRepository.save(book);
+
+      return "redirect:/books";
+   }
+
+   // Display book
+   @GetMapping("/books/{id}")
+   public String showBook(Model bookModel, @PathVariable int id) {
+      Book book = bookRepository.findById(id);
+      bookModel.addAttribute("book", book);
+
+      return "books/show";
+   }
+
+   // Edit book
+   @GetMapping("/books/{id}/edit")
+   public String editbook(Model bookModel, @PathVariable int id) {
+      Book book = bookRepository.findById(id);
+      bookModel.addAttribute("book", book);
+
+      return "books/edit";
+   }
+
+   // Update book
+   @PostMapping("/books/{id}")
+   public String updateUser(Model bookModel, @PathVariable int id,
+                            @ModelAttribute Book updatedBook) {
+      Book book = bookRepository.findById(id);
+      book.setCourseAbb(updatedBook.getCourseAbb());
+      book.setAuthorName(updatedBook.getAuthorName());
+      book.setBookName(updatedBook.getBookName());
+      book.setIbnNum(updatedBook.getIbnNum());
+      book.setCond(updatedBook.getCond());
+      book.setPrice(updatedBook.getPrice());
+      book.setDetail(updatedBook.getDetail());
+
+      bookRepository.save(book);
+
+      return "redirect:/books/{id}";
+   }
+
+   // Delete book
+   @GetMapping("/books/{id}/delete")
+   public String deleteUser(@PathVariable int id) {
+      Book book = bookRepository.findById(id);
+      bookRepository.delete(book);
+
+      return "redirect:/books";
+   }
+
 }

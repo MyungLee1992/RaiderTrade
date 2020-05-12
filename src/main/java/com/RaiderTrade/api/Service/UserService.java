@@ -5,12 +5,10 @@ import java.util.List;
 
 public interface UserService {
     
-    List<User> lookup();
+    List<User> findAll();
     
     User updateByUserId(User user, int userId);
-    
-    void deleteByUserId(int userId);
-    
+
     long total();
 
     User authenticateUser(String username, String password);
@@ -18,5 +16,7 @@ public interface UserService {
     User findByUsername(String username);
 
     void save(User user);
+
+    void update(User oldUser, User newUser);
 
 }

@@ -23,11 +23,15 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="c75cb8cd-44bd-479a-941d-5ee5a3647f67">
+        <schema name="raidertrade" object-types="column, table, function, view" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="c75cb8cd-44bd-479a-941d-5ee5a3647f67">
-      <console name="Connection" type="STANDARD" schema="raidertrade" session="Main"><![CDATA[select * from user;]]></console>
+      <console name="Connection" type="STANDARD" schema="raidertrade" session="Main"><![CDATA[drop table user_role;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

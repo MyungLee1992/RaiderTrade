@@ -3,7 +3,7 @@
     <%@ include file="/partials/Navigationbar.jsp" %>
      <div class="container">
         <div class="row justify-content-center h-70 w-70">
-           <form:form method="POST" action="/addBook" class="col-lg-8" modelAttribute="bookForm">
+           <form:form method="POST" action="/books/new" class="col-lg-8" modelAttribute="bookForm">
 
               <div class="p-4 m-4 bg-white rounded rousnded-pill shadow-lg">
                  <h5 class="text-center mb-1">Add Book</h5>

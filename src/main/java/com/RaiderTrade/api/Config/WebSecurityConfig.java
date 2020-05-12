@@ -28,16 +28,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/resources/**", "/css/**", "/img/**", "/", "/signup").permitAll()
+                .antMatchers("/resources/**", "/css/**", "/img/**", "/", "/users/new").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/signin")
+                .loginPage("/users/login")
                 .permitAll()
                 .and()
             .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/signout"))
-                .logoutSuccessUrl("/signin")
+                .logoutSuccessUrl("/users/login")
                 .permitAll();
     }
 

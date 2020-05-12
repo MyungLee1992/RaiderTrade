@@ -19,7 +19,8 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <c:if test="${not empty pageContext.request.userPrincipal.name}">
-          <a href="/user" class="nav-link" style="color: black !important;">
+          <c:set var="username" value="${pageContext.request.userPrincipal.name}"></c:set>
+          <a href="/users/${username}" class="nav-link" style="color: black !important;">
             Welcome! ${pageContext.request.userPrincipal.name}
           </a>
           <li class="nav-item">
@@ -30,10 +31,10 @@
         </c:if>
         <c:if test="${empty pageContext.request.userPrincipal.name}">
           <li class="nav-item">
-            <a href="/signup" class="nav-link">Sign Up</a>
+            <a href="/users/new" class="nav-link">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a href="/signin" class="nav-link">Sign In</a>
+            <a href="/users/login" class="nav-link">Sign In</a>
           </li>
         </c:if>
       </ul>
