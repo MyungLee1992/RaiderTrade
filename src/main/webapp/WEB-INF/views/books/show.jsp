@@ -63,15 +63,14 @@
 
               <!-- Show edit and delete buttons to sellers or Admin -->
               <security:authentication var="username" property="principal.username" />
-              <security:authentication var="authority" property="principal.authorities[0]" />
-              <c:if test="${book.user.username == username || authority == 'ADMIN'}">
+              <security:authorize access="${book.user.username == username} or hasAuthority('ADMIN')">
                  <div class="text-right">
                     <a class="btn btn-warning btn-md" href="${book.bookId}/edit">Edit</a>
                     <form method="GET" action="${book.bookId}/delete" class="inline">
                        <button class="btn btn-danger btn-md">Delete</button>
                     </form>
                  </div>
-              </c:if>
+              </security:authorize>
 
 
            </div>
