@@ -37,7 +37,7 @@ public class BookController {
    @GetMapping({"", "/page/{pageNo}"})
    public String getAllBooks(Model bookModel, @PathVariable(required = false) Integer pageNo) {
       pageNo = pageNo == null ? 0 : pageNo - 1;
-      Page<Book> bookList = bookRepository.findAll(PageRequest.of(pageNo, 6));
+      Page<Book> bookList = bookRepository.findAll(PageRequest.of(pageNo, 5));
 
       bookModel.addAttribute("bookList", bookList);
       return "books/index";
@@ -49,9 +49,9 @@ public class BookController {
 
       Page<Book> bookList;
       if(bookName == "") // Display all books when searched value is empty
-         bookList = bookRepository.findAll(PageRequest.of(0, 6));
+         bookList = bookRepository.findAll(PageRequest.of(0, 5));
       else
-         bookList = bookRepository.findByNameContaining(bookName, PageRequest.of(0, 6));
+         bookList = bookRepository.findByNameContaining(bookName, PageRequest.of(0, 5));
 
       bookModel.addAttribute("bookList", bookList);
       return "/books/index";
