@@ -9,6 +9,7 @@ RaiderTrade is made to help students save money on textbooks and electronics for
 <img src="images/4.png" />
 <img src="images/5.png" />
 <img src="images/6.png" />
+<img src="images/7.png" />
 
 ## Tech/Framework used
 <b>Front End</b>
