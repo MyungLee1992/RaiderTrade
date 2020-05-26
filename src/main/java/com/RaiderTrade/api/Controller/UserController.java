@@ -37,14 +37,14 @@ public class UserController implements WebMvcConfigurer {
     }
 
     // Sign up page
-    @GetMapping("/users/new")
+    @GetMapping("/new")
     public String signUp(Model userModel) {
         userModel.addAttribute("userForm", new User());
         return "users/new";
     }
 
     // Create a new user
-    @PostMapping("/users/new")
+    @PostMapping("/new")
     public String createUser(@Valid @ModelAttribute("userForm") User userForm, BindingResult result) {
         userValidator.validate(userForm, result);
 
@@ -57,13 +57,13 @@ public class UserController implements WebMvcConfigurer {
     }
 
     // Log in page
-    @GetMapping("/users/login")
+    @GetMapping("/login")
     public String signIn() {
         return "users/login";
     }
     
     // Authenticate user
-    @PostMapping("/users/login")
+    @PostMapping("/login")
     public String verifyUser(@RequestParam(name = "username") String username,
                              @RequestParam(name = "password") String password) {
 
@@ -75,6 +75,7 @@ public class UserController implements WebMvcConfigurer {
     }
 
     // Show all users
+//    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/users")
     public String showUsers(Model userModel) {
         List<User> userList = userService.findAll();
@@ -83,7 +84,7 @@ public class UserController implements WebMvcConfigurer {
     }
 
     // Display user with username
-    @GetMapping("/users/{username}")
+    @GetMapping("/{username}")
     public String showUserByUsername(Model userModel, @PathVariable String username) {
         User userInfo = userRepository.findByUsername(username);
         userModel.addAttribute("userInfo", userInfo);
@@ -91,7 +92,7 @@ public class UserController implements WebMvcConfigurer {
     }
 
     // Edit user
-    @GetMapping("/users/{username}/edit")
+    @GetMapping("/{username}/edit")
     public String editUser(Model userModel, @PathVariable(name="username") String username) {
         User userInfo = userRepository.findByUsername(username);
         userModel.addAttribute("userInfo", userInfo);
@@ -99,7 +100,7 @@ public class UserController implements WebMvcConfigurer {
     }
 
     // Update user
-    @PostMapping("/users/{username}")
+    @PostMapping("/{username}")
     public String updateUser(@Valid @ModelAttribute("userForm") User userForm,
                              BindingResult result,
                              Model userModel) {
@@ -115,11 +116,11 @@ public class UserController implements WebMvcConfigurer {
     }
 
     // Delete user
-    @GetMapping("/users/{username}/delete")
+    @GetMapping("/{username}/delete")
     public String deleteUser(@PathVariable String username) {
         User user = userService.findByUsername(username);
         userRepository.delete(user);
 
-        return "redirect:/users";
+        return "redirect:/signout";
     }
 }

@@ -60,10 +60,14 @@
                  <form:errors path="price" class="text-danger"/>
                  <div class="input-group mb-2">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon5">Selling Price $</span>
+                      <span class="input-group-text" id="basic-addon5">Selling Price</span>
+                      <span class="input-group-text">$</span>
                     </div>
-                    <form:input type="text" class="form-control" placeholder="$50"
+                    <form:input type="text" class="form-control" value="0"
                            aria-describedby="basic-addon5" path="price"/>
+                    <div class="input-group-append">
+                      <span class="input-group-text">.00</span>
+                    </div>
                  </div>
 
                  <form:errors path="detail" class="text-danger"/>

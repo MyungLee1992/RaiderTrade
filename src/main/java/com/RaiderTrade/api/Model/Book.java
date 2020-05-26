@@ -39,13 +39,13 @@ public class Book implements Serializable {
    @Column(name = "price")
    private float price;
 
-   @Column(name = "detail")
+   @Column(name = "detail", columnDefinition = "TEXT")   // TEXT column can hold up to 64kb
    private String detail;
 
    @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name="user_id", nullable = false)
    @OnDelete(action = OnDeleteAction.CASCADE)
-   private User userId;
+   private User user;
 
    public Book() {
       postDate = LocalDate.now();
@@ -123,11 +123,11 @@ public class Book implements Serializable {
       this.detail = detail;
    }
 
-   public User getUserId() {
-      return userId;
+   public User getUser() {
+      return user;
    }
 
-   public void setUserId(User userId) {
-      this.userId = userId;
+   public void setUser(User user) {
+      this.user = user;
    }
 }

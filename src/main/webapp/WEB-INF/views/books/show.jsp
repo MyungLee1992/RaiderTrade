@@ -58,14 +58,20 @@
                  <div class="input-group-prepend">
                    <span class="input-group-text">Book Description</span>
                  </div>
-                 <input type="text" class="form-control"
-                        value="${book.detail}" disabled />
+                 <textarea class="form-control" disabled>${book.detail}</textarea>
               </div>
 
-              <a class="btn btn-warning btn-md" href="${book.bookId}/edit">Edit</a>
-              <form method="GET" action="${book.bookId}/delete" class="inline">
-                 <button class="btn btn-danger btn-md">Delete</button>
-              </form>
+              <!-- Show edit and delete buttons to sellers or Admin -->
+              <security:authentication var="username" property="principal.username" />
+              <security:authentication var="authority" property="principal.authorities[0]" />
+              <c:if test="${book.user.username == username || authority == 'ADMIN'}">
+                 <div class="text-right">
+                    <a class="btn btn-warning btn-md" href="${book.bookId}/edit">Edit</a>
+                    <form method="GET" action="${book.bookId}/delete" class="inline">
+                       <button class="btn btn-danger btn-md">Delete</button>
+                    </form>
+                 </div>
+              </c:if>
 
 
            </div>

@@ -9,7 +9,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "role_id", updatable = false, nullable = false)
-    private Long id;
+    private int roleId;
 
     @Column(length = 50)
     private String name;
@@ -17,12 +17,20 @@ public class Role {
     @ManyToMany(mappedBy = "roles")
     private Set <User> users;
 
-    public Long getId() {
-        return id;
+    public Role() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Role(int roleId, String name) {
+        this.roleId = roleId;
+        this.name = name;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     public String getName() {
@@ -33,12 +41,11 @@ public class Role {
         this.name = name;
     }
 
-
-    public Set <User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set <User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 }

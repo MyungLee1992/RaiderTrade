@@ -72,8 +72,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Book Description</span>
                     </div>
-                    <form:input type="text" class="form-control"
-                           value="${book.detail}" path="detail"/>
+                    <form:textarea class="form-control" value="${book.detail}" path="detail"/>
                  </div>
 
                  <input type="submit" class="btn btn-primary btn-lg btn-block" />

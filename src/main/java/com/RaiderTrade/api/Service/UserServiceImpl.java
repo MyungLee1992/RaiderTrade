@@ -1,5 +1,6 @@
 package com.RaiderTrade.api.Service;
 
+import com.RaiderTrade.api.Model.Role;
 import com.RaiderTrade.api.Model.User;
 import com.RaiderTrade.api.Repository.RoleRepository;
 import com.RaiderTrade.api.Repository.UserRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -34,7 +36,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         user.setPassword(encrypt.encode(user.getPassword()));
-        user.setRoles(new HashSet<>(roleRepository.findAll()));
+        Set<Role> roles = new HashSet<>();
+        Role role = roleRepository.findById(2);
+        roles.add(role);
+        user.setRoles(new HashSet<>(roles));
+//        user.setRoles(new HashSet<>(roleRepository.findAll()));
         userRepository.save(user);
     }
 

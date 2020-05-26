@@ -1,5 +1,3 @@
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-
 <nav class="navbar navbar-expand-md navbar-light bg-light rounded stick-top">
   <div class="container-fluid">
     <a href="../" class="navbar-brand">
@@ -18,25 +16,37 @@
     </button>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
-        <c:if test="${not empty pageContext.request.userPrincipal.name}">
-          <c:set var="username" value="${pageContext.request.userPrincipal.name}"></c:set>
-          <a href="/users/${username}" class="nav-link" style="color: black !important;">
-            Welcome! ${pageContext.request.userPrincipal.name}
+        <!-- Logged in user view -->
+        <security:authorize access="isAuthenticated()">
+          <security:authentication var="username" property="principal.username" />
+          <security:authentication var="authority" property="principal.authorities" />
+          <a href="/${username}" class="nav-link" style="color: black !important;">
+            Welcome! ${username}
           </a>
           <li class="nav-item">
             <form class="form-inline" method="POST" action="/signout">
               <a href="/signout" class="nav-link">Sign Out</a>
             </form>
           </li>
-        </c:if>
-        <c:if test="${empty pageContext.request.userPrincipal.name}">
+        </security:authorize>
+
+        <!-- Guest view -->
+        <security:authorize access="!isAuthenticated()">
           <li class="nav-item">
-            <a href="/users/new" class="nav-link">Sign Up</a>
+            <a href="/new" class="nav-link">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a href="/users/login" class="nav-link">Sign In</a>
+            <a href="/login" class="nav-link">Sign In</a>
           </li>
-        </c:if>
+        </security:authorize>
+
+<!--        <c:if test="${not empty pageContext.request.userPrincipal.name}">-->
+<!--          <c:set var="username" value="${pageContext.request.userPrincipal.name}"></c:set>-->
+
+<!--        </c:if>-->
+<!--        <c:if test="${empty pageContext.request.userPrincipal.name}">-->
+
+<!--        </c:if>-->
       </ul>
     </div>
   </div>

@@ -23,7 +23,7 @@
                  <td><c:out value="${user.userType}"/></td>
                  <td><c:out value="${user.username}"/></td>
                  <td><c:out value="${user.phoneNum}"/></td>
-                 <td><a href="/users/${user.username}"><c:out value ="More Info"/></a></td>
+                 <td><a href="/${user.username}"><c:out value ="More Info"/></a></td>
               </tr>
               </c:forEach>
           </tbody>

@@ -3,7 +3,7 @@
     <%@ include file="/partials/Navigationbar.jsp" %>
      <div class="container">
         <div class="row justify-content-center h-70 w-70">
-           <form:form action="/users/${userInfo.username}" method="POST" class="col-lg-8"
+           <form:form action="/${userInfo.username}" method="POST" class="col-lg-8"
                       modelAttribute="userInfo">
 
               <div class="p-4 m-4 bg-white rounded rounded-pill shadow-lg">

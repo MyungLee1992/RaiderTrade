@@ -3,7 +3,7 @@
     <%@include file="/partials/Navigationbar.jsp" %>
     <div class="container">
       <div class="row justify-content-center text-center h-100">
-        <form method="POST" action="/users/login" class="my-auto col-sm-12 col-md-8">
+        <form method="POST" action="/login" class="my-auto col-sm-12 col-md-8">
 
           <div class="from-group p-4 m-4 bg-white rounded rounded-pill">
             <strong class="col-12 text-danger">${error}</strong>

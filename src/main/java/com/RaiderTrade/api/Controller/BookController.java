@@ -9,16 +9,14 @@ import com.RaiderTrade.api.Service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/books")
 public class BookController {
 
    @Autowired
@@ -36,35 +34,51 @@ public class BookController {
    private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 
    // Display all books
-   @GetMapping("/books")
-   public String getAllBooks(Model bookModel) {
-      List<Book> bookList = bookRepository.findAll();
-      bookModel.addAttribute("bookList", bookList);
+   @GetMapping({"", "/page/{pageNo}"})
+   public String getAllBooks(Model bookModel, @PathVariable(required = false) Integer pageNo) {
+      pageNo = pageNo == null ? 0 : pageNo - 1;
+      Page<Book> bookList = bookRepository.findAll(PageRequest.of(pageNo, 6));
 
+      bookModel.addAttribute("bookList", bookList);
       return "books/index";
    }
 
+   // Display searched books
+   @PostMapping({"", "/page/{pageNo}"})
+   public String searchBooks(Model bookModel, @RequestParam(name = "bookName") String bookName) {
+
+      Page<Book> bookList;
+      if(bookName == "") // Display all books when searched value is empty
+         bookList = bookRepository.findAll(PageRequest.of(0, 6));
+      else
+         bookList = bookRepository.findByNameContaining(bookName, PageRequest.of(0, 6));
+
+      bookModel.addAttribute("bookList", bookList);
+      return "/books/index";
+   }
+
    // Book registration
-   @GetMapping("/books/new")
+   @GetMapping("/new")
    public String newBook(Model bookModel) {
+
       bookModel.addAttribute("bookForm", new Book());
 
       return "books/new";
    }
 
    // Add new book
-   @PostMapping("/books/new")
+   @PostMapping("/new")
    public String newBook(@ModelAttribute("bookForm") Book book) {
       String loggedInUsername = securityService.findLoggedInUsername();
       User user = userService.findByUsername(loggedInUsername);
-      book.setUserId(user);
+      book.setUser(user);
       bookRepository.save(book);
 
       return "redirect:/books";
    }
 
    // Display book
-   @GetMapping("/books/{id}")
+   @GetMapping("/{id}")
    public String showBook(Model bookModel, @PathVariable int id) {
       Book book = bookRepository.findById(id);
       bookModel.addAttribute("book", book);
@@ -73,7 +87,7 @@ public class BookController {
    }
 
    // Edit book
-   @GetMapping("/books/{id}/edit")
+   @GetMapping("/{id}/edit")
    public String editbook(Model bookModel, @PathVariable int id) {
       Book book = bookRepository.findById(id);
       bookModel.addAttribute("book", book);
@@ -82,7 +96,7 @@ public class BookController {
    }
 
    // Update book
-   @PostMapping("/books/{id}")
+   @PostMapping("/{id}")
    public String updateUser(Model bookModel, @PathVariable int id,
                             @ModelAttribute Book updatedBook) {
       Book book = bookRepository.findById(id);
@@ -100,7 +114,7 @@ public class BookController {
    }
 
    // Delete book
-   @GetMapping("/books/{id}/delete")
+   @GetMapping("/{id}/delete")
    public String deleteUser(@PathVariable int id) {
       Book book = bookRepository.findById(id);
       bookRepository.delete(book);
