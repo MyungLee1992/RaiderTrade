@@ -14,8 +14,10 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ml-auto">
+
+    <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+      <ul class="navbar-nav p-4 p-md-0 ml-auto text-center">
+        <h5 class="text-dark d-sm-none">Welcome to RaiderTrade</h5>
         <!-- Logged in user view -->
         <security:authorize access="isAuthenticated()">
           <security:authentication var="username" property="principal.username" />
@@ -24,7 +26,7 @@
             Welcome! ${username}
           </a>
           <li class="nav-item">
-            <form class="form-inline" method="POST" action="/signout">
+            <form class="form" method="POST" action="/signout">
               <a href="/signout" class="nav-link">Sign Out</a>
             </form>
           </li>
@@ -52,15 +54,32 @@
   </div>
 </nav>
 
-<div class="collapse" id="navbarToggleExternalContent">
-  <div class="bg-custom p-4 rounded">
-    <h5 class="text-dark h4 text-center">Welcome to RaiderTrade</h5>
-    <nav class="text-center">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="/signin" class="nav-link">Sign In</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</div>
+<!--<div class="collapse" id="navbarToggleExternalContent">-->
+<!--  <div class="bg-custom p-4 rounded">-->
+<!--    <h5 class="text-dark h4 text-center">Welcome to RaiderTrade</h5>-->
+<!--    <nav class="text-center">-->
+<!--      <ul class="navbar-nav ml-auto">-->
+<!--        <security:authorize access="isAuthenticated()">-->
+<!--          <security:authentication var="username" property="principal.username" />-->
+<!--          <security:authentication var="authority" property="principal.authorities" />-->
+<!--          <a href="/${username}" class="nav-link" style="color: black !important;">-->
+<!--            Welcome! ${username}-->
+<!--          </a>-->
+<!--          <li class="nav-item">-->
+<!--            <form class="form-inline" method="POST" action="/signout">-->
+<!--              <a href="/signout" class="nav-link">Sign Out</a>-->
+<!--            </form>-->
+<!--          </li>-->
+<!--        </security:authorize>-->
+
+<!--        <security:authorize access="!isAuthenticated()">-->
+<!--          <li class="nav-item">-->
+<!--            <a href="/new" class="nav-link">Sign Up</a>-->
+<!--            <a href="/login" class="nav-link">Sign In</a>-->
+<!--          </li>-->
+<!--        </security:authorize>-->
+
+<!--      </ul>-->
+<!--    </nav>-->
+<!--  </div>-->
+<!--</div>-->

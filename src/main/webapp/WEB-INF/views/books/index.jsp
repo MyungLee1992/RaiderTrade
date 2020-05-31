@@ -21,16 +21,16 @@
    </div>
 
   <!-- Display the list of books -->
-  <div class="container">
-     <div class="row justify-content-center h-100">
+  <div class="container h-100" id="bookTable">
+     <div class="row justify-content-center">
         <table class="table bg-light rounded mt-3">
            <thead>
               <tr>
-                  <th scope="col">Course</th>
-                  <th scope="col">Author Name</th>
+                  <th scope="col">Course Name</th>
                   <th scope="col">Book Name</th>
-                  <th scope="col">IBN #</th>
+                  <th scope="col">Author Name</th>
                   <th scope="col">Condition</th>
+                  <th scope="col">IBN #</th>
                   <th scope="col">Selling Price</th>
                   <th scope="col">Post Date</th>
               </tr>
@@ -39,10 +39,10 @@
               <c:forEach items="${bookList.content}" var="book">
                  <tr>
                     <td><c:out value="${book.courseAbb}"/></td>
-                    <td><c:out value="${book.authorName}"/></td>
                     <td><c:out value="${book.bookName}"/></td>
-                    <td><c:out value="${book.ibnNum}"/></td>
+                    <td><c:out value="${book.authorName}"/></td>
                     <td><c:out value="${book.cond}"/></td>
+                    <td><c:out value="${book.ibnNum}"/></td>
                     <td><c:out value="$${book.price}"/></td>
                     <td><c:out value="${book.postDate}"/></td>
                     <td><a href="/books/${book.bookId}"><c:out value ="More Info"/></a></td>

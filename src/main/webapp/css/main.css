@@ -4,9 +4,9 @@
 }
 
 body {
-  font-family: 'Fjalla One', sans-serif;
-  width: 100%;
-  background-image: url('/img/bg-campus.jpg');
+    font-family: 'Fjalla One', sans-serif;
+    width: 100%;
+    background-image: url('/img/bg-campus.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -22,7 +22,18 @@ td {
 }
 
 tr {
-    font-size: 0.9rem;
+    font-size: 1rem;
+}
+
+.container {
+    width: 90%;
+}
+
+@media only screen and (max-width: 992px) {
+    #bookTable th:nth-child(odd),
+    #bookTable td:nth-child(odd) {
+        display: none
+    }
 }
 
 .inline {
