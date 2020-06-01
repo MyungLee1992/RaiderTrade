@@ -6,7 +6,7 @@
            <form:form method="POST" action="/new" class="col-lg-8" modelAttribute="userForm">
 
               <div class="p-4 m-4 bg-white rounded rounded-pill shadow-lg">
-                 <h5 class="text-center mb-1">Registration Form</h5>
+                 <h5 class="text-center mb-3">Registration Form</h5>
 
                  <form:errors path="firstName" class="text-danger"/>
                  <div class="input-group mb-2">

@@ -4,7 +4,7 @@
      <div class="container">
         <div class="row justify-content-center h-70 w-70">
            <div class="p-4 m-4 bg-white rounded rounded-pill shadow-lg">
-              <h5 class="text-center mb-2">User Information</h5>
+              <h5 class="text-center mb-3">User Information</h5>
 
               <div class="input-group mb-2">
                  <div class="input-group-prepend">
@@ -46,10 +46,16 @@
                         value="${userInfo.phoneNum}" disabled />
               </div>
 
-              <a class="btn btn-warning btn-md" href="${userInfo.username}/edit">Edit</a>
-              <form method="GET" action="${userInfo.username}/delete" class="inline">
-                 <button class="btn btn-danger btn-md">Delete</button>
-              </form>
+              <!-- Show edit and delete buttons to only logged in user or Admin -->
+              <security:authentication var="username" property="principal.username" />
+              <security:authorize access="${userInfo.username == username} or hasAuthority('ADMIN')">
+                 <div class="text-right">
+                    <a class="btn btn-warning btn-md" href="${userInfo.username}/edit">Edit</a>
+                    <form method="GET" action="${userInfo.username}/delete" class="inline">
+                       <button class="btn btn-danger btn-md">Delete</button>
+                    </form>
+                 </div>
+              </security:authorize>
 
            </div>
         </div> <!-- row -->

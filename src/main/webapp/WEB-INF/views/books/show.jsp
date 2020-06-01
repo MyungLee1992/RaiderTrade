@@ -4,7 +4,7 @@
      <div class="container">
         <div class="row justify-content-center h-70 w-70">
            <div class="p-4 m-4 bg-white rounded rounded-pill shadow-lg">
-              <h5 class="text-center mb-2">Book Details</h5>
+              <h5 class="text-center mb-3">Book Details</h5>
 
               <div class="input-group mb-2">
                  <div class="input-group-prepend">

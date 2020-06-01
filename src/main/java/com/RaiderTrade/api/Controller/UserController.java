@@ -58,7 +58,7 @@ public class UserController implements WebMvcConfigurer {
 
     // Log in page
     @GetMapping("/login")
-    public String signIn() {
+    public String login() {
         return "users/login";
     }
     

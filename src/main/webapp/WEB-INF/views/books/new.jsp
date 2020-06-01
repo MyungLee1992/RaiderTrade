@@ -6,7 +6,7 @@
            <form:form method="POST" action="/books/new" class="col-lg-8" modelAttribute="bookForm">
 
               <div class="p-4 m-4 bg-white rounded rousnded-pill shadow-lg">
-                 <h5 class="text-center mb-1">Add Book</h5>
+                 <h5 class="text-center mb-3">Add Book</h5>
 
                  <form:errors path="courseAbb" class="text-danger"/>
                  <div class="input-group mb-2">

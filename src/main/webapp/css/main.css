@@ -30,8 +30,8 @@ tr {
 }
 
 @media only screen and (max-width: 992px) {
-    #bookTable th:nth-child(odd),
-    #bookTable td:nth-child(odd) {
+    th:nth-child(odd),
+    td:nth-child(odd) {
         display: none
     }
 }
