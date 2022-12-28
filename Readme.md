@@ -31,6 +31,3 @@ RaiderTrade is made to help students save money on textbooks and electronics for
 <b>Architecture</b>
 - RESTful API
 - MVC (Model-View-Controller)
-
-## Live Demo
-RaiderTrade is running by Heroku. For more information, click [Here](https://raidertrade.herokuapp.com/) to check it out!
